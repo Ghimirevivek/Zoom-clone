@@ -11,16 +11,12 @@ import { useGetCallById } from '@/hooks/useGetCallById';
 import MeetingSetup from '@/components/MeetingSetup';
 import MeetingRoom from '@/components/MeetingRoom';
 
-interface MeetingPageProps {
-  params: {
-    id: string;
-  };
-}
 
-const MeetingPage = ({ params: { id } }: MeetingPageProps) => {
+
+const MeetingPage = ({ params }: { params: { id: string } }) => {
   // const { id } = useParams();
   const { isLoaded, user } = useUser();
-  const { call, isCallLoading } = useGetCallById(id);
+  const { call, isCallLoading } = useGetCallById(params.id);
   const [isSetupComplete, setIsSetupComplete] = useState(false);
 
   if (!isLoaded || isCallLoading) return <Loader />;
