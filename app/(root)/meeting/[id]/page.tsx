@@ -11,7 +11,13 @@ import { useGetCallById } from '@/hooks/useGetCallById';
 import MeetingSetup from '@/components/MeetingSetup';
 import MeetingRoom from '@/components/MeetingRoom';
 
-const MeetingPage = ({params:{id}}:{params:{id :string}  }) => {
+interface MeetingPageProps {
+  params: {
+    id: string;
+  };
+}
+
+const MeetingPage = ({ params: { id } }: MeetingPageProps) => {
   // const { id } = useParams();
   const { isLoaded, user } = useUser();
   const { call, isCallLoading } = useGetCallById(id);
